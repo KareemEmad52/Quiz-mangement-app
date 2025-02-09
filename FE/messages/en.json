@@ -1,0 +1,341 @@
+{
+  "HomePage": {
+    "meta": {
+      "title": "Home",
+      "desc": "Welcome to the home page"
+    },
+    "home": "Home",
+    "quiz": "Quiz",
+    "available-quiz": "All Available Quiz",
+    "scores-history": "Scores History",
+    "logout": "Log out",
+    "NoData": "No data found yet",
+    "logAgain": "Please log in again",
+    "QuizPage": {
+      "WelcomeBack":"Welcome back,",
+      "YourLearningProgressIsOnTrack": "Your learning progress is on track",
+      "UpcomingQuizzes":"Upcoming Quizzes",
+      "CompletedQuizzes": "Completed Quizzes",
+      "ActiveCourses":"Active Courses",
+      "AchievementPoints": "Achievement Points",
+      "NextQuizInDays": "Next quiz in 2 days",
+      "AverageScore":"Average score",
+      "InProgress": "In progress",
+      "LevelScholar":"Level 5 Scholar",
+      "AvailableQuizzes":"Available Quizzes",
+      "Duration": "Duration",
+      "Questions":"Questions",
+      "DueDate": "Due Date",
+      "StartQuiz":"Start Quiz",
+      "Minutes":"Minutes",
+      "ViewAll":"View All",
+      "StartQuizFirst":"Must start the first quiz to view this page.",
+      "goToAllQuizzes":"Go to All Quizzes",
+      "backToHome":"Back to Home"
+    },
+    "AllQuizzesPage":{
+      "AvailableQuizzes": "Available Quizzes",
+      "AllLevels": "All Levels",
+      "easy": "Easy",
+      "medium": "Medium",
+      "hard": "Hard",
+      "Duration": "Duration",
+      "Newest": "Newest First",
+      "Oldest": "Oldest First",
+      "Filter": "More Filter",
+      "Search": "Search quizzes...",
+      "Questions": "Questions",
+      "StartQuiz": "Start Quiz",
+      "Minutes": "Minutes",
+      "DueDate": "Due Date",
+      "Error": "an error occurred while getting the quizzes",
+      "NoData": "No data found yet",
+      "logAgain": "Please log in again"
+    },
+    "ScoresHistoryPage": {
+      "title": "Quiz History",
+      "desc": "Welcome to the quiz history page",
+      "QuizTitle": "Quiz Title",
+      "Subject": "Lesson",
+      "Level": "Level",
+      "Date": "Date",
+      "Score": "Score",
+      "Status": "Status",
+      "Actions": "Actions",
+      "ViewDetails": "View Details",
+      "SortByDate": "Sort by Date",
+      "SubmittedAt": "Sort By Submition Date",
+      "SortByScore": "Sort by Score",
+      "Duration": "Duration",
+      "SortByDuration": "Sort by Duration",
+      "SubmitAt": "Submition Date",
+      "NoData":"No data found yet",
+      "SortBy": "Sort By",
+      "QuizPage": {
+        "title": "Quiz Details",
+        "Score": "Score",
+        "Duration": "Duration",
+        "CorrectAnswers": "Correct Answers",
+        "DateTaken": "Date Taken",
+        "Minutes": "Minutes",
+        "Topics": "Topics",
+        "DetailedResults": "Detailed Results",
+        "NoData": "No data found yet"
+      }
+    },
+    "profile": "Profile",
+    "generate-quiz": "Generate New Quiz",
+    "students": "Students",
+    "edit-quiz": "All Quizzes",
+    "null": "null"
+  },
+  "NotFound":{
+    "oops": "Oops!",
+    "btn": "Back to home",
+    "title": " It seems like youve taken a wrong turn",
+    "desc":"We're working to bring it back."
+  },
+  "Login": {
+    "meta": {
+      "title": "Login",
+      "desc": "Welcome to the login page"
+    },
+    "title": "Welcome Back 👋",
+    "desc": "Nice to meet you agian ",
+    "btn": "Login",
+    "email": "Email",
+    "password": "Password",
+    "validation": {
+      "email": "Please enter a valid email",
+      "password": {
+        "min": "Password must be at least 6 characters",
+        "max": "Password cannot exceed 50 characters"
+     }
+    },
+    "social": {
+      "facebook": "Login with Facebook",
+      "google": "Login with Google"
+    },
+    "forgot": "Forgot Password?",
+    "Signup1": "Don't have an account?",
+    "Signup2": "Signup",
+    "or": "or"
+  },
+  "Signup": {
+    "meta": {
+      "title": "Signup",
+      "desc": "Welcome to the signup page"
+    },
+    "title": "Register Now 👋",
+    "desc": "Welcome to QuizMaster",
+    "btn": "Signup",
+    "name": "name",
+    "email": "Email",
+    "password": "Password",
+    "gender": "Gender",
+    "male": "Male",
+    "female": "Female",
+    "selectGender": "Select your gender",
+    "validation": {
+      "name": {
+        "min": "Name must be at least 2 characters",
+        "max": "Name cannot exceed 50 characters"
+      },
+      "password": {
+        "min": "Password must be at least 6 characters",
+        "max": "Password cannot exceed 50 characters"
+     },
+     "email": "Please enter a valid email address",
+     "gender": "Please select your gender"
+    },
+    "forgot": "Forgot Password?",
+    "login1": "Already have an account?",
+    "login2": "Login"
+    },
+  "Quiz": {
+    "meta": {
+      "title": "Quiz",
+      "desc": "Welcome to the quiz page"
+    },
+    "next" : "Next",
+    "previos" : "Previos",
+    "submit": "Submit",
+    "submitting": "Submitting",
+    "submitedSuccessfully": "Submited Successfully",
+    "score": "Score",
+    "yourGrade": "Your Grade",
+    "thankSubmission": "Thank you for your submission",
+    "TimeTaken": "Time Taken",
+    "Accuracy": "Accuracy",
+    "backToHome": "Back To Home",
+    "alertTitle": "Are you sure you want to submit?",
+    "alertMessage": "Once you submit the quiz, you won&apos;t be able to go back or change your answers.",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "progree": "Progress",
+    "of": "of",
+    "TimeLeft": "Time Limit",
+    "Difficulty": "Difficulty",
+    "NumOfQ": "Number Of Questions",
+    "DueDate": "Due Date",
+    "Minutes": "Minutes",
+    "completeActiveQuiz": "Please complete your active quiz before starting a new one.",
+    "goToActiveQuiz": "Go to Active Quiz"
+  },
+  "Profile": {
+    "meta": {
+      "title": "Profile",
+      "desc": "Welcome to the profile page"
+    },
+    "title": "Profile",
+    "name": "Name",
+    "namePlaceHolder": "Enter your name",
+    "passwordPlaceHolder": "Enter your password",
+    "emailPlaceHolder": "Enter your email",
+    "email": "Email",
+    "gender":"Gender",
+    "password": "Password",
+    "update": "Update Profile",
+    "Bio": "Bio",
+    "updating": "Updating",
+    "validation": {
+      "name": {
+        "min": "Name must be at least 2 characters",
+        "max": "Name cannot exceed 50 characters"
+      },
+      "email": "Please enter a valid email address",
+      "password": {
+        "min": "Password must be at least 6 characters",
+        "max": "Password cannot exceed 50 characters"
+     },
+     "gender": "Please select your gender",
+     "update": "No changes were made"
+    }
+  },
+  "GenerateQuiz": {
+    "meta": {
+      "title": "Generate Quiz",
+      "desc": "Welcome to the generate quiz page"
+    },
+    "title": "Generate Quiz",
+    "QuizTitle": "Quiz Title",
+    "QuizDesc": "Quiz Description",
+    "AddQuestion" : "Add Question",
+    "generateQuiz" : "Generate Quiz",
+    "Question": "Question",
+    "Answer": "Answer",
+    "MarkAsCorrect": "Mark as Correct",
+    "RemoveQuestion": "Remove Question",
+    "QuizDetails" : "Quiz Details",
+    "Correct": "Correct",
+    "QuizTitleRequired": "Quiz Title is required",
+    "QuizDescriptionRequired": "Quiz Description is required",
+    "QuestionRequired": "Questions are required",
+    "AnswerRequired": "Answer is required",
+    "CorrectAnswerRequired": "Correct Answer is required",
+    "DurationRequired": "Duration is required",
+    "DueDateRequired": "Due Date is required",
+    "QuizDuration": "Quiz Duration",
+    "DueDate": "Due Date",
+    "PickDate": "Pick a date",
+    "StatusRequired": "Status is required",
+    "selectStatus": "Select Status",
+    "status": "Quiz Status",
+    "StartTimeRequired": "Starting Time is required",
+    "StartTime": "Starting Time",
+    "Added": "Quiz Added Successfully",
+    "errorAdding": "An error occurred while adding the quiz"
+  },
+  "Students": {
+    "meta": {
+      "title": "Students",
+      "desc": "Welcome to the students page"
+    },
+    "title": "Students",
+    "SortByName": "Sort By Name",
+    "SortByEmail": "Sort By Email",
+    "Grade": "Sort By Grade",
+    "sortByGender": "Sort By Gender",
+    "Gender": "Gender",
+    "Name" : "Name",
+    "Email": "Email",
+    "Age": "Age",
+    "City": "City",
+    "SortByGrade": "Sort By Grade",
+    "SortByAge": "Sort By Age",
+    "SortByCity": "Sort By City",
+    "Phone": "Phone",
+    "Actions": "Actions",
+    "Delete": "Delete",
+    "Edit": "Edit",
+    "Update": "Update",
+    "Filter":"More Filter",
+    "Search":"Search students...",
+    "ViewDetails":"View Details",
+    "SortBy": "Sort By",
+    "alertTitle": "Are you sure you want to Delete Student?",
+    "alertMessage": "Once you delete the student, you won&apos;t be able to go back or change your answers.",
+    "cancel": "Cancel",
+    "confirm": "Delete",
+    "EditStudent": "Edit Student"
+  },
+  "EditQuiz": {
+    "meta": {
+      "title": "Generate Quiz",
+      "desc": "Welcome to the generate quiz page"
+    },
+    "title": "Generate Quiz",
+    "QuizTitle": "Quiz Title",
+    "QuizDesc": "Quiz Description",
+    "AddQuestion" : "Add Question",
+    "generateQuiz" : "Update Quiz",
+    "Question": "Question",
+    "Answer": "Answer",
+    "MarkAsCorrect": "Mark as Correct",
+    "RemoveQuestion": "Remove Question",
+    "QuizDetails" : "Quiz Details",
+    "questionID": "Question ID",
+    "Correct": "Correct",
+    "QuizTitleRequired": "Quiz Title is required",
+    "QuizDescriptionRequired": "Quiz Description is required",
+    "QuestionRequired": "Questions are required",
+    "AnswerRequired": "Answer is required",
+    "CorrectAnswerRequired": "Correct Answer is required",
+    "DurationRequired": "Duration is required",
+    "DueDateRequired": "Due Date is required",
+    "QuizDuration": "Quiz Duration",
+    "DueDate": "Due Date",
+    "PickDate": "Pick a date"
+  },
+  "AllQuizzes": {
+    "meta": {
+      "title": "Edit Quiz",
+      "desc": "Welcome to the edit quiz page"
+    },
+    "title": "All Quizzes",
+    "SortByTitle": "Sort By Title",
+    "SortByDiff": "Sort By Difficulty",
+    "Grade": "Sort By Grade",
+    "Title" : "Title",
+    "Duration": "Duration",
+    "deadline": "DueDate",
+    "numberOfQuestions": "Questions",
+    "SortByDuration": "Sort By Duration",
+    "SortByDate": "Sort By Date",
+    "SortByCity": "Sort By City",
+    "Phone": "Phone",
+    "Actions": "Actions",
+    "Delete": "Delete",
+    "Edit": "Edit",
+    "Update": "Update",
+    "Filter":"More Filter",
+    "Search":"Search Quiz...",
+    "ViewDetails":"View Details",
+    "SortBy": "Sort By",
+    "alertTitle": "Are you sure you want to Delete Quiz?",
+    "alertMessage": "Once you delete the quiz, you won&apos;t be able to go back or change your answers.",
+    "cancel": "Cancel",
+    "confirm": "Delete",
+    "EditStudent": "Edit Quiz"
+  }
+}
