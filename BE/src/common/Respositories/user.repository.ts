@@ -58,4 +58,14 @@ export class UserRepository {
   async getUserById(id: string): Promise<IUser | null> {
     return userModel.findById(id).exec();
   }
+
+
+  async updateOne(id: string, data: Partial<IUser>): Promise<IUser | null> {
+    return userModel.findOneAndUpdate({ _id: id }, data, { new: true }).select('-password').exec();
+  }
+
+  async deleteOne(id:string): Promise<IUser | null> {
+    return userModel.findByIdAndDelete({_id: id},{ new: true }).select('-password').exec();
+  } 
+
 }

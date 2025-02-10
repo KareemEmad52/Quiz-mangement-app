@@ -30,7 +30,6 @@ exports.createQuiz = (0, errorHandler_1.CatchAsyncError)((req, res) => __awaiter
     });
 }));
 exports.getAllQuizes = (0, errorHandler_1.CatchAsyncError)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    yield new Promise((resolve) => setTimeout(resolve, 2000));
     const Quizzes = yield quizService.getAllQuizes();
     if (!Quizzes)
         throw new errorHandler_1.AppError("Quizzes not found", 404);

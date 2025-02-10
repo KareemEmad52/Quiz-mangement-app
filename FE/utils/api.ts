@@ -1,4 +1,4 @@
-import {CreateQuizResponse, DeleteQuizResponse, EditQuizResponse, GetStudentsResponse, LoginData, LoginResponse, QuizAnswersDto, QuizOutput, QuizResponse, QuizSubmissionResponse, QuizWithResultsResponse, SignupData, SpecificQuizResponse, SpecificQuizResultsResponse} from "@/types/types";
+import {checkSubmitionResponse, CreateQuizResponse, DeleteQuizResponse, EditQuizResponse, GetStudentsResponse, LoginData, LoginResponse, QuizAnswersDto, QuizOutput, QuizResponse, QuizSubmissionResponse, QuizWithResultsResponse, SignupData, SpecificQuizResponse, SpecificQuizResultsResponse} from "@/types/types";
 import axios from "axios";
 import {useAppStore} from "@/lib/Store/Store";
 
@@ -74,5 +74,10 @@ export const getAllStudents = async (): Promise<GetStudentsResponse> =>{
 
 export const updateQuiz = async (data: QuizOutput, id: string): Promise<EditQuizResponse> => {
   const res = await api.put(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/quizes/${id}`, data);
+  return res.data
+}
+
+export const checkQuizSubmition = async (id: string): Promise<checkSubmitionResponse> => {
+  const res = await api.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/results/submit/${id}`);
   return res.data
 }

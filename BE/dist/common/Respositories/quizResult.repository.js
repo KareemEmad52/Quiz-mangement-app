@@ -70,6 +70,11 @@ class QuizResultRepository extends BaseRepository_repository_1.BaseRepository {
                 .exec();
         });
     }
+    deleteQuizSubmissionByUser(studentId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return quizSubmission_model_1.QuizSubmissionModel.deleteMany({ student: studentId }).exec();
+        });
+    }
 }
 exports.QuizResultRepository = QuizResultRepository;
 //# sourceMappingURL=quizResult.repository.js.map

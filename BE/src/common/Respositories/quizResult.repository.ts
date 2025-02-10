@@ -57,4 +57,9 @@ export class QuizResultRepository extends BaseRepository<IQuizSubmission> {
       .populate('student')
       .exec();
   }
+
+  async deleteQuizSubmissionByUser(studentId: string) {
+    return QuizSubmissionModel.deleteMany({ student: studentId}).exec();
+  }
+
 }

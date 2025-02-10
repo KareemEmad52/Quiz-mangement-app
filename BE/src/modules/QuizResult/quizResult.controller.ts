@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import {NextFunction, Request, Response} from "express";
 
 import { getReasonPhrase, getStatusCode, StatusCodes } from "http-status-codes/build/cjs";
 import { AppError, CatchAsyncError } from "../../middlewares/errorHandler";
@@ -18,7 +18,6 @@ export const submitQuiz = CatchAsyncError(async (req: Request, res: Response) =>
   const userId = req.user.id; 
   const { answers } = req.body;
 
-  await new Promise((resolve) => setTimeout(resolve, 3000));
   // Call the service to submit the quiz
   const quizResult = await quizResultService.submitQuiz(quizId, userId, answers);
 
@@ -50,4 +49,11 @@ export const getQuizResultsByQuiz = CatchAsyncError(async (req: Request, res: Re
         status: getStatusCode(getReasonPhrase(StatusCodes.OK)),
         data: results,
     });
+})
+
+export const checkSubmitions = CatchAsyncError(async (req: Request, res:Response)=>{
+  res.status(StatusCodes.OK).json({
+      message: getReasonPhrase(StatusCodes.OK),
+      status: StatusCodes.OK,
+  });
 })

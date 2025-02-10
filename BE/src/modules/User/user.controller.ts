@@ -26,3 +26,22 @@ export const getUserById = CatchAsyncError (async (req: Request, res: Response) 
     });
 })
 
+export const updateUser = CatchAsyncError (async (req: Request, res: Response) => {
+    const user = await userService.updateUser(req.user.id, req.body)
+    if(!user) throw new AppError("User not found",404)
+    res.status(StatusCodes.OK).json({
+        message: getReasonPhrase(StatusCodes.OK),
+        status: getStatusCode(getReasonPhrase(StatusCodes.OK)),
+        data: user,
+    });
+})
+
+export const deleteUser = CatchAsyncError(async (req: Request, res: Response) => {
+    const user = await userService.deleteUser(req.user.id , req.params.id)
+    if(!user) throw new AppError("faild to delete",404)
+    res.status(StatusCodes.OK).json({
+        message: getReasonPhrase(StatusCodes.OK),
+        status: getStatusCode(getReasonPhrase(StatusCodes.OK)),
+        data: user,
+    });
+})

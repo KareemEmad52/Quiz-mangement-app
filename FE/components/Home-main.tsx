@@ -17,10 +17,10 @@ import { motion } from 'framer-motion'
 import ButtonAnimate from './Button-animate'
 import { useTranslations } from 'next-intl'
 import { Link, useRouter } from '@/i18n/routing'
-import { useQuery } from "@tanstack/react-query";
-import { getAllQuizzes } from "@/utils/api";
-import { QuizResponse, StatusEnums } from "@/types/types";
-import { format } from "date-fns"
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { checkQuizSubmition, getAllQuizzes } from "@/utils/api";
+import { checkSubmitionResponse, QuizResponse, StatusEnums } from "@/types/types";
+import { format, set } from "date-fns"
 import { ar, enUS } from "date-fns/locale"
 import Image from 'next/image'
 import { toast } from 'sonner'
@@ -42,14 +42,33 @@ const HomeMain = ({ locale }: { locale: string }) => {
     }
   }
 
-  
+
 
 
   const router = useRouter();
   const dateLocale = locale === "ar" ? ar : enUS
-  const handleNavigate = (id: string) => {
-    router.push(`/home/quiz/${id}`)
-  }
+  const [btnLoading , setBtnLoading] = React.useState<string | null>(null)
+  const mutation = useMutation({
+    mutationFn: (id: string) => checkQuizSubmition(id),
+    onSuccess: async  (_, id) => {
+      router.prefetch(`/home/quiz/${id}`);
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      router.push(`/home/quiz/${id}`);
+      setBtnLoading(null);
+    }, 
+    onError: (error) => {
+      const err = error as AxiosError<any>
+      toast.error(err?.response?.data.message as string || "Something went wrong");
+      setBtnLoading(null);
+    }
+  });
+
+   const handleNavigate = async (id: string) => {
+    console.log("clicked");
+    setBtnLoading(id)
+    mutation.mutate(id);
+  };
+
   return (
     <div className="container mx-auto p-6">
       {/* Welcome, Section */}
@@ -143,7 +162,7 @@ const HomeMain = ({ locale }: { locale: string }) => {
         )}
 
         {/* If Error Occurs */}
-        {isError || data?.data.length ==0 &&
+        {isError || data?.data.length == 0 &&
           <div className="text-red-500 w-full h-full flex items-center justify-center">
             <div className="flex flex-col items-center gap-4 justify-center">
               <Image src="/empty-state.png" width={200} height={200} alt="error" />
@@ -207,8 +226,12 @@ const HomeMain = ({ locale }: { locale: string }) => {
                           <span>{format(new Date(quiz.deadline), "PPp", { locale: dateLocale })}</span>
                         </div>
                       </div>
-                      <ButtonAnimate onClick={() => handleNavigate(quiz._id)}
-                        className="w-full bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors duration-200">
+                      <ButtonAnimate 
+                        onClick={() => handleNavigate(quiz._id)}
+                        className="w-full bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors duration-200"
+                        loading={btnLoading === quiz._id}
+                        disabled={btnLoading === quiz._id}
+                        >
                         {t("QuizPage.StartQuiz")}
                       </ButtonAnimate>
                     </div>

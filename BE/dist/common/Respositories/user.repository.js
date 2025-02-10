@@ -72,6 +72,16 @@ class UserRepository {
             return user_model_1.userModel.findById(id).exec();
         });
     }
+    updateOne(id, data) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return user_model_1.userModel.findOneAndUpdate({ _id: id }, data, { new: true }).select('-password').exec();
+        });
+    }
+    deleteOne(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return user_model_1.userModel.findByIdAndDelete({ _id: id }, { new: true }).select('-password').exec();
+        });
+    }
 }
 exports.UserRepository = UserRepository;
 //# sourceMappingURL=user.repository.js.map

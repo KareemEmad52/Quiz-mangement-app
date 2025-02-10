@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getQuizResultsByQuiz = exports.getQuizResultsByUser = exports.submitQuiz = void 0;
+exports.checkSubmitions = exports.getQuizResultsByQuiz = exports.getQuizResultsByUser = exports.submitQuiz = void 0;
 const cjs_1 = require("http-status-codes/build/cjs");
 const errorHandler_1 = require("../../middlewares/errorHandler");
 const quiz_repository_1 = require("../../common/Respositories/quiz.repository");
@@ -26,7 +26,6 @@ exports.submitQuiz = (0, errorHandler_1.CatchAsyncError)((req, res) => __awaiter
     const { quizId } = req.params;
     const userId = req.user.id;
     const { answers } = req.body;
-    yield new Promise((resolve) => setTimeout(resolve, 3000));
     // Call the service to submit the quiz
     const quizResult = yield quizResultService.submitQuiz(quizId, userId, answers);
     // Send the response
@@ -55,6 +54,12 @@ exports.getQuizResultsByQuiz = (0, errorHandler_1.CatchAsyncError)((req, res) =>
         message: (0, cjs_1.getReasonPhrase)(cjs_1.StatusCodes.OK),
         status: (0, cjs_1.getStatusCode)((0, cjs_1.getReasonPhrase)(cjs_1.StatusCodes.OK)),
         data: results,
+    });
+}));
+exports.checkSubmitions = (0, errorHandler_1.CatchAsyncError)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    res.status(cjs_1.StatusCodes.OK).json({
+        message: (0, cjs_1.getReasonPhrase)(cjs_1.StatusCodes.OK),
+        status: cjs_1.StatusCodes.OK,
     });
 }));
 //# sourceMappingURL=quizResult.controller.js.map

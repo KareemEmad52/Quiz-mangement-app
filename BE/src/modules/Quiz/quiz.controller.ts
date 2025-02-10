@@ -33,7 +33,6 @@ export const createQuiz = CatchAsyncError(
 
 export const getAllQuizes = CatchAsyncError(
   async (req: Request, res: Response) => {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
     const Quizzes = await quizService.getAllQuizes();
     if (!Quizzes) throw new AppError("Quizzes not found", 404);
     res.status(StatusCodes.OK).json({

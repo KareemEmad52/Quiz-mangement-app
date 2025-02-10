@@ -27,6 +27,8 @@ import { format, set } from 'date-fns'
 import { useMutation } from "@tanstack/react-query";
 import { quizSubmit } from "@/utils/api";
 import QuizFinished from "./QuizFinished";
+import {AxiosError} from "axios";
+import {toast} from "sonner";
 
 interface QuizProps {
   quizData: Quiz;
@@ -41,7 +43,7 @@ const Quiz = ({ quizData, locale }: QuizProps) => {
   const [isActiveQuiz, setIsActiveQuiz] = useState<boolean>(false)
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const { mutateAsync, data } = useMutation<QuizSubmissionResponse, Error, string>({
+  const { mutate, data } = useMutation<QuizSubmissionResponse, Error, string>({
     mutationFn: (id) => {
       const quizAnswers: QuizAnswersDto = {
         answers: Object.entries(answers).map(([questionId, selected]) => ({
@@ -51,6 +53,16 @@ const Quiz = ({ quizData, locale }: QuizProps) => {
       };
       return quizSubmit(quizAnswers, id);
     },
+    onSuccess: ()=>{
+      submitQuiz();
+    },
+    onError: (error) => {
+      const err = error as AxiosError<any>
+      toast.error(err?.response?.data.message as string || "Something went wrong");
+    },
+    onSettled: ()=>{
+      setIsLoading(false);
+    }
   });
 
   useEffect(() => {
@@ -97,9 +109,8 @@ const Quiz = ({ quizData, locale }: QuizProps) => {
   const handleSubmit = async () => {
     setIsLoading(true);
     setShowSubmitAlert(false);
-    await mutateAsync(quizId as string);
-    submitQuiz();
-    console.log(data);
+    mutate(quizId as string);
+    // router.push(`/home`);
   };
 
 
@@ -143,6 +154,7 @@ const Quiz = ({ quizData, locale }: QuizProps) => {
       {isFinished  && (
         <QuizFinished locale={locale} id={quizId as string} />
       )}
+      
 
       {!isFinished && quizData && (
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="w-full min-h-screen flex justify-center items-center mb-16 mt-10">
@@ -235,7 +247,7 @@ const Quiz = ({ quizData, locale }: QuizProps) => {
             </CardContent>
             <CardFooter>
               <div className="w-full flex justify-between items-center">
-                <ButtonAnimate disabled={currentQuestionIndex === 0} onClick={handlePrevQuestion} variant="secondary">
+                <ButtonAnimate disabled={currentQuestionIndex === 0 || isLoading}  onClick={handlePrevQuestion} variant="secondary">
                   {t("previos")}
                 </ButtonAnimate>
                 {currentQuestionIndex === quizData.questions.length - 1 ? (

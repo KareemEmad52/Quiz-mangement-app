@@ -318,3 +318,7 @@ export interface EditQuizResponse {
     __v: number;
   };
 }
+export interface checkSubmitionResponse {
+  message: string;
+  status: number;
+}

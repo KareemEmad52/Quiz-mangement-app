@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getUserById = exports.getAllUsers = void 0;
+exports.deleteUser = exports.updateUser = exports.getUserById = exports.getAllUsers = void 0;
 const cjs_1 = require("http-status-codes/build/cjs");
 const errorHandler_1 = require("../../middlewares/errorHandler");
 const user_repository_1 = require("../../common/Respositories/user.repository");
@@ -26,6 +26,26 @@ exports.getUserById = (0, errorHandler_1.CatchAsyncError)((req, res) => __awaite
     const user = yield userService.getUserById(req.params.id);
     if (!user)
         throw new errorHandler_1.AppError("User not found", 404);
+    res.status(cjs_1.StatusCodes.OK).json({
+        message: (0, cjs_1.getReasonPhrase)(cjs_1.StatusCodes.OK),
+        status: (0, cjs_1.getStatusCode)((0, cjs_1.getReasonPhrase)(cjs_1.StatusCodes.OK)),
+        data: user,
+    });
+}));
+exports.updateUser = (0, errorHandler_1.CatchAsyncError)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const user = yield userService.updateUser(req.user.id, req.body);
+    if (!user)
+        throw new errorHandler_1.AppError("User not found", 404);
+    res.status(cjs_1.StatusCodes.OK).json({
+        message: (0, cjs_1.getReasonPhrase)(cjs_1.StatusCodes.OK),
+        status: (0, cjs_1.getStatusCode)((0, cjs_1.getReasonPhrase)(cjs_1.StatusCodes.OK)),
+        data: user,
+    });
+}));
+exports.deleteUser = (0, errorHandler_1.CatchAsyncError)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const user = yield userService.deleteUser(req.user.id, req.params.id);
+    if (!user)
+        throw new errorHandler_1.AppError("faild to delete", 404);
     res.status(cjs_1.StatusCodes.OK).json({
         message: (0, cjs_1.getReasonPhrase)(cjs_1.StatusCodes.OK),
         status: (0, cjs_1.getStatusCode)((0, cjs_1.getReasonPhrase)(cjs_1.StatusCodes.OK)),

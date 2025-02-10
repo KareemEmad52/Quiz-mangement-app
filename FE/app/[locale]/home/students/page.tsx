@@ -15,7 +15,6 @@ export const generateMetadata = async ({ params }: { params: Promise<any> }) => 
 
 
 const page = async ({ params }: { params: Promise<any> }) => {
-  const t = await getTranslations("Profile");
   const { locale } = await params;
   const queryClient = new QueryClient()
   await queryClient.prefetchQuery({
