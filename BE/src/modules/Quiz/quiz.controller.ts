@@ -10,6 +10,8 @@ import { QuizService } from "./quiz.service";
 import { QuizRepository } from "../../common/Respositories/quiz.repository";
 import { UserRepository } from "../../common/Respositories/user.repository";
 import { QuestionRepository } from "../../common/Respositories/question.repository";
+
+
 const quizRepository = new QuizRepository();
 const userRepository = new UserRepository();
 const questionRepository = new QuestionRepository();
@@ -79,4 +81,31 @@ export const deleteSpecificQuiz = CatchAsyncError(
       status: getStatusCode(getReasonPhrase(StatusCodes.OK)),
       data: deletedQuiz,
     });
+})
+
+export const AddQuestionToSpecificQuiz = CatchAsyncError(
+  async (req: Request, res: Response) => {
+    const updatedQuiz = await quizService.addQuestionToSpecificQuiz(
+      req.params.quizId,
+      req.user.id,
+      req.body
+    );
+    if (!updatedQuiz) throw new AppError("Quiz not found", 404);
+    res.status(StatusCodes.OK).json({
+      message: getReasonPhrase(StatusCodes.OK),
+      status: getStatusCode(getReasonPhrase(StatusCodes.OK)),
+      data: updatedQuiz,
+    });
+  }
+);
+
+
+export const DeleteQuestionFromSpecificQuiz = CatchAsyncError( async (req: Request , res: Response)=>{
+  const deletedQuestion = await quizService.deleteQuestion(req.params.quizId , req.user.id, req.body)
+  if(!deletedQuestion) throw new AppError("An error occurred while deleting question", 404);
+  res.json({
+    message: getReasonPhrase(StatusCodes.OK),
+    status: getStatusCode(getReasonPhrase(StatusCodes.OK)),
+    data: deletedQuestion
+  })
 })

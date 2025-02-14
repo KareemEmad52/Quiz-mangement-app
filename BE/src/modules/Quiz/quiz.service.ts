@@ -1,4 +1,4 @@
-import { createQuizDto, deleteQuizReturnType } from "../../common/types/types";
+import { addQuestionToQuizDto, createQuizDto, deleteQuestionDto, deleteQuizReturnType } from "../../common/types/types";
 
 import { QuizRepository } from "../../common/Respositories/quiz.repository";
 import { AppError } from "../../middlewares/errorHandler";
@@ -43,22 +43,7 @@ export class QuizService {
         return quiz;
     }
 
-    // teacher role only can update the quiz
-    // async updateQuiz(quizId: string, authenticatedUserId: string, updatedData: Partial<Quiz>) {
-    //     const quiz = await this.quizRepository.findOne({ id: quizId });
-    //     if (!quiz) throw new AppError("quiz not found", StatusCodes.NOT_FOUND);
-    //     if (authenticatedUserId != quiz.teacher.toString()) throw new AppError("quiz not found", StatusCodes.NOT_ACCEPTABLE)
-    //     const updatedQuiz = await this.quizRepository.update({ id: quizId }, updatedData)
-    //     return updatedQuiz;
-    // }
-    // teacher role only can update the quiz
-    // async deleteQuiz(quizId: string, authenticatedUserId: string) {
-    //     const quiz = await this.quizRepository.findOne({ id: quizId });
-    //     if (!quiz) throw new AppError("quiz not found", StatusCodes.NOT_FOUND);
-    //     if (authenticatedUserId != quiz.teacher) throw new AppError("quiz not found", StatusCodes.NOT_ACCEPTABLE)
-    //     await this.quizRepository.delete({ id: quizId })
-    //     return true;
-    // }
+    
 
     // teacher role only can update the quiz
     async updateQuiz(quizId: string, authenticatedUserId: string, updatedData: Partial<createQuizDto>) {
@@ -80,15 +65,22 @@ export class QuizService {
         };
     }
 
+    async addQuestionToSpecificQuiz(quizId: string, authenticatedUserId: string, data: addQuestionToQuizDto) {
+        const quiz = await this.quizRepository.findOne({ _id: quizId });
+        if (!quiz) throw new AppError("quiz not found", StatusCodes.NOT_FOUND);
+        if (authenticatedUserId != quiz.teacher.toString()) throw new AppError("Teacher only can update the quiz", StatusCodes.FORBIDDEN)
+        const updatedQuiz = await this.quizRepository.addQuestionToSpecificQuiz(quizId, {...data , quizId});
+        return updatedQuiz;
+    }
+   
 
-    // teacher role only can update the quiz
-    // async updateQuizDeadline(quizId: string, authenticatedUserId: string, newDeadLine: string) {        
-    //     const quiz = await this.quizRepository.findOne({ id: quizId });
-    //     if (!quiz) throw new AppError("quiz not found", StatusCodes.NOT_FOUND);
-    //     if (authenticatedUserId != quiz.teacher) throw new AppError("quiz not found", StatusCodes.FORBIDDEN)
-    //     await this.quizRepository.update({id : quizId},  {deadline: newDeadLine })
-    //     return true;
-    // }
+    async deleteQuestion(quizId: string, authenticatedUserId: string, data: deleteQuestionDto) {
+        const quiz = await this.quizRepository.findOne({ _id: quizId });
+        if (!quiz) throw new AppError("quiz not found", StatusCodes.NOT_FOUND);
+        if (authenticatedUserId != quiz.teacher.toString()) throw new AppError("Teacher only can update the quiz", StatusCodes.FORBIDDEN)
+        const updatedQuiz = await this.quizRepository.deleteQuestionFromSpecificQuiz(quizId, data);        
+        return updatedQuiz;
+    }
 
 }
 

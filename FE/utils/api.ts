@@ -1,4 +1,4 @@
-import {checkSubmitionResponse, CreateQuizResponse, DeleteQuizResponse, EditQuizResponse, GetStudentsResponse, LoginData, LoginResponse, QuizAnswersDto, QuizOutput, QuizResponse, QuizSubmissionResponse, QuizWithResultsResponse, SignupData, SpecificQuizResponse, SpecificQuizResultsResponse} from "@/types/types";
+import {AddquestionResponse, AddQuestionToSpecificQuiz, checkSubmitionResponse, CreateQuizResponse, DeleteQuizResponse, EditQuizResponse, GetStudentsResponse, LoginData, LoginResponse, QuizAnswersDto, QuizOutput, QuizResponse, QuizSubmissionResponse, QuizWithResultsResponse, SignupData, SpecificQuizResponse, SpecificQuizResultsResponse} from "@/types/types";
 import axios from "axios";
 import {useAppStore} from "@/lib/Store/Store";
 
@@ -79,5 +79,31 @@ export const updateQuiz = async (data: QuizOutput, id: string): Promise<EditQuiz
 
 export const checkQuizSubmition = async (id: string): Promise<checkSubmitionResponse> => {
   const res = await api.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/results/submit/${id}`);
+  return res.data
+}
+
+export const addQuestion = async (quizId: string , data: AddQuestionToSpecificQuiz): Promise<AddquestionResponse> =>{
+  const res = await api.patch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/quizes/${quizId}`, data);
+  return res.data
+}
+
+
+// export const deleteQuestion = async (quizId: string , data): Promise<DeleteQuestionResponse> =>{
+
+// }
+
+export const getSingleQuiz = async (id: string): Promise<SpecificQuizResponse> => {
+  const res = await api.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/quizes/${id}`);
+  return res.data
+}
+
+export const deleteQuestion = async (quizId: string, data: {questionId: string}) => {
+  const response = await api.delete(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/quizes/${quizId}/question`, { data });
+  return response.data;
+};
+
+
+export const deletestudent = async (id: string) =>{
+  const res = await api.delete(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/${id}`);
   return res.data
 }

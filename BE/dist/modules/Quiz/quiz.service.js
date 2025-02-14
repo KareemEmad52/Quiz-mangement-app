@@ -57,22 +57,6 @@ class QuizService {
         });
     }
     // teacher role only can update the quiz
-    // async updateQuiz(quizId: string, authenticatedUserId: string, updatedData: Partial<Quiz>) {
-    //     const quiz = await this.quizRepository.findOne({ id: quizId });
-    //     if (!quiz) throw new AppError("quiz not found", StatusCodes.NOT_FOUND);
-    //     if (authenticatedUserId != quiz.teacher.toString()) throw new AppError("quiz not found", StatusCodes.NOT_ACCEPTABLE)
-    //     const updatedQuiz = await this.quizRepository.update({ id: quizId }, updatedData)
-    //     return updatedQuiz;
-    // }
-    // teacher role only can update the quiz
-    // async deleteQuiz(quizId: string, authenticatedUserId: string) {
-    //     const quiz = await this.quizRepository.findOne({ id: quizId });
-    //     if (!quiz) throw new AppError("quiz not found", StatusCodes.NOT_FOUND);
-    //     if (authenticatedUserId != quiz.teacher) throw new AppError("quiz not found", StatusCodes.NOT_ACCEPTABLE)
-    //     await this.quizRepository.delete({ id: quizId })
-    //     return true;
-    // }
-    // teacher role only can update the quiz
     updateQuiz(quizId, authenticatedUserId, updatedData) {
         return __awaiter(this, void 0, void 0, function* () {
             const quiz = yield this.quizRepository.findOne({ _id: quizId });
@@ -95,6 +79,28 @@ class QuizService {
             return {
                 deleted: true
             };
+        });
+    }
+    addQuestionToSpecificQuiz(quizId, authenticatedUserId, data) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const quiz = yield this.quizRepository.findOne({ _id: quizId });
+            if (!quiz)
+                throw new errorHandler_1.AppError("quiz not found", cjs_1.StatusCodes.NOT_FOUND);
+            if (authenticatedUserId != quiz.teacher.toString())
+                throw new errorHandler_1.AppError("Teacher only can update the quiz", cjs_1.StatusCodes.FORBIDDEN);
+            const updatedQuiz = yield this.quizRepository.addQuestionToSpecificQuiz(quizId, Object.assign(Object.assign({}, data), { quizId }));
+            return updatedQuiz;
+        });
+    }
+    deleteQuestion(quizId, authenticatedUserId, data) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const quiz = yield this.quizRepository.findOne({ _id: quizId });
+            if (!quiz)
+                throw new errorHandler_1.AppError("quiz not found", cjs_1.StatusCodes.NOT_FOUND);
+            if (authenticatedUserId != quiz.teacher.toString())
+                throw new errorHandler_1.AppError("Teacher only can update the quiz", cjs_1.StatusCodes.FORBIDDEN);
+            const updatedQuiz = yield this.quizRepository.deleteQuestionFromSpecificQuiz(quizId, data);
+            return updatedQuiz;
         });
     }
 }

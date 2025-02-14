@@ -1,9 +1,11 @@
-import { createQuizDto, deleteQuizReturnType, QuizWithQuestionsDto } from "../types/types";
+import { addQuestionToQuizDto, createQuizDto, deleteQuestionDto, deleteQuizReturnType, QuizWithQuestionsDto } from "../types/types";
 import { BaseRepository } from "./BaseRepository.repository";
 import { IQuiz, quizModel } from "../../DB/models/quiz.model";
 import { IQuestion, questionModel } from "../../DB/models/question.model";
 import { Model, ObjectId } from "mongoose";
 import {QuizSubmissionModel} from "../../DB/models/quizSubmission.model";
+import { StatusCodes } from "http-status-codes/build/cjs";
+import { AppError } from "../../middlewares/errorHandler";
 
 export class QuizRepository extends BaseRepository<IQuiz> {
   constructor() {
@@ -176,4 +178,29 @@ export class QuizRepository extends BaseRepository<IQuiz> {
       deleted: true,
     };
   }
+
+
+  async addQuestionToSpecificQuiz(quizId: string, data: addQuestionToQuizDto) {
+    const questions = await questionModel.insertMany(data);
+    if(!questions) throw new AppError("Questions not found", StatusCodes.NOT_FOUND);
+    const quiz = await this.model.findById(quizId);
+    quiz.questions.push(...questions.map((q)=> q._id) as ObjectId[]);
+    await quiz.save();
+    return quiz
+  }
+
+
+  async deleteQuestionFromSpecificQuiz(quizId: string, data: deleteQuestionDto) {
+    const quiz = await this.model.findById(quizId);
+    if(!quiz) throw new AppError("quiz not found", StatusCodes.NOT_FOUND);
+    const question = await questionModel.findByIdAndDelete(data.questionId);
+    if(!question) throw new AppError("Question not found", StatusCodes.NOT_FOUND);
+    const index = quiz.questions.indexOf(question._id as ObjectId);
+    if(index === -1) throw new AppError("Question not found", StatusCodes.NOT_FOUND);
+    quiz.questions.splice(index, 1);
+    await quiz.save();
+    return quiz
+  }
+
+
 }

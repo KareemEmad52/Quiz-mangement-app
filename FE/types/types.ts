@@ -60,7 +60,7 @@ export type Question = {
   quizId: string;
   _id: string;
   __v: number;
-}
+};
 
 export type QuizInput = {
   quizTitle: string;
@@ -132,7 +132,7 @@ export type CreateQuizResponse = {
     description: string;
     duration: number;
     status: StatusEnums;
-    deadline: string; 
+    deadline: string;
     noOfQuests: number;
     teacher: string;
     questions: {
@@ -144,25 +144,25 @@ export type CreateQuizResponse = {
       __v: number;
     }[];
     _id: string;
-    startTime: string; 
-    createdAt: string; 
+    startTime: string;
+    createdAt: string;
     updatedAt: string;
     __v: number;
   };
 };
 
 export interface DeleteQuizResponse {
-  message: string,
-  status: number,
+  message: string;
+  status: number;
   data: {
-      deleted: boolean
-  }
+    deleted: boolean;
+  };
 }
 
 export interface SpecificQuizResponse {
-  message: string,
-  status: number,
-  data: Quiz
+  message: string;
+  status: number;
+  data: Quiz;
 }
 
 interface Answer {
@@ -172,8 +172,8 @@ interface Answer {
 }
 
 export interface QuizWithResultsResponse {
-  message: string,
-  status: number,
+  message: string;
+  status: number;
   data: {
     _id: string;
     student: string;
@@ -185,9 +185,8 @@ export interface QuizWithResultsResponse {
     createdAt: string;
     updatedAt: string;
     __v: number;
-  }[]
+  }[];
 }
-
 
 export interface SpecificQuizResultsResponse {
   message: string;
@@ -201,7 +200,7 @@ export interface SpecificQuizResultsResponse {
       description: string;
       duration: number;
       noOfQuests: number;
-      status: StatusEnums
+      status: StatusEnums;
     };
     answers: {
       question: {
@@ -221,33 +220,31 @@ export interface SpecificQuizResultsResponse {
   }[];
 }
 
-
 export interface QuizSubmissionResponse {
-  message: string; 
-  status: number; 
+  message: string;
+  status: number;
   data: {
-      student: string;
-      quiz: string;
-      answers: {
-          question: string;
-          answer: string; 
-          _id: string; 
-      }[];
-      score: number; 
-      status: string; 
-      _id: string; 
-      submittedAt: string; 
-      __v: number;
+    student: string;
+    quiz: string;
+    answers: {
+      question: string;
+      answer: string;
+      _id: string;
+    }[];
+    score: number;
+    status: string;
+    _id: string;
+    submittedAt: string;
+    __v: number;
   };
 }
 
 export interface QuizAnswersDto {
   answers: {
-    questionId: string; 
-    selected: string;  
+    questionId: string;
+    selected: string;
   }[];
 }
-
 
 export type OriginalUpdatedQuiz = {
   quizTitle: string;
@@ -255,10 +252,10 @@ export type OriginalUpdatedQuiz = {
   quizDuration: number;
   dueDate: string;
   questions: {
-      id: string;
-      text: string;
-      options: string[];
-      correctAnswer: string;
+    id: string;
+    text: string;
+    options: string[];
+    correctAnswer: string;
   }[];
 };
 
@@ -267,16 +264,15 @@ export type ConvertedUpdatedQuiz = {
   description: string;
   duration: number;
   questions: {
-      _id: string;
-      title: string;
-      choices: string[];
-      correctAnswer: string;
+    _id: string;
+    title: string;
+    choices: string[];
+    correctAnswer: string;
   }[];
   startTime: string;
   status: string;
   deadline: string;
 };
-
 
 export interface Student {
   id: string;
@@ -313,7 +309,7 @@ export interface EditQuizResponse {
       __v: number;
     }[];
     startTime: string;
-    createdAt: string; 
+    createdAt: string;
     updatedAt: string;
     __v: number;
   };
@@ -321,4 +317,30 @@ export interface EditQuizResponse {
 export interface checkSubmitionResponse {
   message: string;
   status: number;
+}
+
+export type AddQuestionToSpecificQuiz = {
+  title: string;
+  choices: string[];
+  correctAnswer: string;
+};
+
+export interface AddquestionResponse {
+  message: string;
+  status: number;
+  data: {
+    _id: string;
+    title: string;
+    description: string;
+    duration: number;
+    status: StatusEnums;
+    deadline: string;
+    noOfQuests: number;
+    teacher: string;
+    questions: string[];
+    startTime: string;
+    createdAt: string;
+    updatedAt: string;
+    __v: number;
+  };
 }

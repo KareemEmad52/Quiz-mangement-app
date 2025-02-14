@@ -19,11 +19,12 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { useQuery } from "@tanstack/react-query";
-import { getAllStudents } from "@/utils/api";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { deletestudent, getAllStudents } from "@/utils/api";
 import { Student } from "@/types/types";
 import { DesktopTableEditQuizSkeleton, MobileCardEditQuizSkeleton } from "./Skeletons/EditQuizSkeletons";
-import Image from "next/image";
+import { toast } from "sonner";
+import { AxiosError } from "axios";
 
 
 
@@ -32,6 +33,8 @@ export default function StudentsTable({ locale }: { locale: string }) {
   const [sortBy, setSortBy] = useState("");
   const t = useTranslations("Students");
   const [showDeleteAlert, setShowDeleteAlert] = useState(false);
+  const [deleteId, setDeleteId] = useState("");
+  const queryClient = useQueryClient();
 
   const { data, isLoading } = useQuery({
     queryKey: ['students'],
@@ -55,8 +58,36 @@ export default function StudentsTable({ locale }: { locale: string }) {
     return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
   };
 
-  const handleDelete = () => {
+  const handleDelete = (id: string) => {
+    setDeleteId(id)
     setShowDeleteAlert(true);
+  };
+
+  const {mutateAsync} = useMutation({
+    mutationFn: (id: string) => deletestudent(id),
+  })
+
+
+  const handleDeleteQuiz = async (id: string) => {
+    try {
+      const promise = mutateAsync(id); // Delete the student
+      toast.promise(promise, {
+        loading: 'Deleting student...',
+        success: (data) => {
+          // Invalidate the query to refetch the updated list of students
+          queryClient.invalidateQueries({ queryKey: ['students'] });
+          return `Student deleted successfully`;
+        },
+        error: (error) => {
+          const err = error as AxiosError<any>;
+          return err?.response?.data.message as string || "Something went wrong";
+        },
+      });
+    } catch (error) {
+      console.error("Error deleting student:", error);
+    } finally {
+      setShowDeleteAlert(false);
+    }
   };
 
 
@@ -78,7 +109,7 @@ export default function StudentsTable({ locale }: { locale: string }) {
             <span>{student.gender}</span>
           </div>
           <div className="flex items-center justify-center flex-col ">
-            <Button onClick={handleDelete} className="w-full mt-2 hover:bg-red-500 hover:text-white transition-colors duration-300" variant="outline" >
+            <Button onClick={() => handleDelete(student.id)} className="w-full mt-2 hover:bg-red-500 hover:text-white transition-colors duration-300" variant="outline" >
               {t("Delete")}
             </Button>
             <Button className="w-full mt-2 hover:bg-blue-500 hover:text-white transition-colors duration-300" variant="outline">
@@ -99,8 +130,8 @@ export default function StudentsTable({ locale }: { locale: string }) {
             <AlertDialogDescription>{t("alertMessage")}</AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter className={`flex ${locale === "ar" ? "flex-row-reverse" : "flex-row"} gap-3 items-center`}>
-            <AlertDialogCancel className="m-0">{t("cancel")}</AlertDialogCancel>
-            <AlertDialogAction className="bg-red-600 hover:bg-red-500 m-0">
+            <AlertDialogCancel className="m-0" >{t("cancel")}</AlertDialogCancel>
+            <AlertDialogAction className="bg-red-600 hover:bg-red-500 m-0" onClick={() => handleDeleteQuiz(deleteId)}>
               {t("confirm")}
             </AlertDialogAction>
           </AlertDialogFooter>
@@ -199,7 +230,7 @@ export default function StudentsTable({ locale }: { locale: string }) {
                         <TableCell>{student.gender}</TableCell>
                         <TableCell>
                           <div className="flex items-center gap-3">
-                            <Button size="icon" variant="ghost" onClick={handleDelete} className="  hover:bg-red-500 hover:text-white transition-colors duration-300">
+                            <Button size="icon" variant="ghost" onClick={() => handleDelete(student.id)} className="  hover:bg-red-500 hover:text-white transition-colors duration-300">
                               <Trash className="h-8 w-8" />
                             </Button>
                             <Button size="icon" variant="ghost" className="  hover:bg-blue-600 hover:text-white transition-colors duration-300">

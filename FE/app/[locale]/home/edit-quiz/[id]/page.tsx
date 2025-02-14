@@ -1,10 +1,11 @@
 "use client";
 
+import AddQuestionModel from "@/components/AddQuestionModel";
 import UpdateQuizForm from "@/components/Forms/UpdateQuizForm";
 import UpdateQuizFormSkeleton from "@/components/Skeletons/updateQuizFormSkeleton";
 import { useAppStore } from "@/lib/Store/Store";
 import { Quiz, SpecificQuizResponse } from "@/types/types";
-import { getSpacificQuizData } from "@/utils/api";
+import { getSingleQuiz, getSpacificQuizData } from "@/utils/api";
 import { useQuery } from "@tanstack/react-query";
 import { BookOpen } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -14,25 +15,22 @@ import { useState } from "react";
 export default function CreateNewQuizPage() {
   const t = useTranslations("EditQuiz");
   const { id } = useParams();
-  const [updatedQuiz, setUpdatedQuiz] = useState<Quiz>();
-  const token = useAppStore((state) => state.token);
 
   const quizId = Array.isArray(id) ? id[0] : id;
 
-  const { data } = useQuery<SpecificQuizResponse>({
-    queryKey: ['quizData', quizId, token],
+  const { data ,isLoading } = useQuery<SpecificQuizResponse>({
+    queryKey: ['singleQuizData', quizId],
     queryFn: () => {
       if (!quizId) {
         throw new Error("Quiz ID is undefined");
       }
-      return getSpacificQuizData(quizId, token);
+      return getSingleQuiz(quizId);
     },
-    enabled: !!quizId,
   });
 
 
 
-  if (!data) {
+  if (isLoading || !data) {
     return <UpdateQuizFormSkeleton />;
   }
 
@@ -44,7 +42,7 @@ export default function CreateNewQuizPage() {
         </div>
         <h1 className="text-2xl font-bold text-gray-900">{t("title")}</h1>
       </div>
-      <UpdateQuizForm quiz={data.data as Quiz} />
+      <UpdateQuizForm quiz={data.data as Quiz} key={data.data.questions.length} />
     </>
   );
 }

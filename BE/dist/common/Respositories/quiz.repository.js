@@ -14,6 +14,8 @@ const BaseRepository_repository_1 = require("./BaseRepository.repository");
 const quiz_model_1 = require("../../DB/models/quiz.model");
 const question_model_1 = require("../../DB/models/question.model");
 const quizSubmission_model_1 = require("../../DB/models/quizSubmission.model");
+const cjs_1 = require("http-status-codes/build/cjs");
+const errorHandler_1 = require("../../middlewares/errorHandler");
 class QuizRepository extends BaseRepository_repository_1.BaseRepository {
     constructor() {
         super(quiz_model_1.quizModel);
@@ -166,6 +168,33 @@ class QuizRepository extends BaseRepository_repository_1.BaseRepository {
             return {
                 deleted: true,
             };
+        });
+    }
+    addQuestionToSpecificQuiz(quizId, data) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const questions = yield question_model_1.questionModel.insertMany(data);
+            if (!questions)
+                throw new errorHandler_1.AppError("Questions not found", cjs_1.StatusCodes.NOT_FOUND);
+            const quiz = yield this.model.findById(quizId);
+            quiz.questions.push(...questions.map((q) => q._id));
+            yield quiz.save();
+            return quiz;
+        });
+    }
+    deleteQuestionFromSpecificQuiz(quizId, data) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const quiz = yield this.model.findById(quizId);
+            if (!quiz)
+                throw new errorHandler_1.AppError("quiz not found", cjs_1.StatusCodes.NOT_FOUND);
+            const question = yield question_model_1.questionModel.findByIdAndDelete(data.questionId);
+            if (!question)
+                throw new errorHandler_1.AppError("Question not found", cjs_1.StatusCodes.NOT_FOUND);
+            const index = quiz.questions.indexOf(question._id);
+            if (index === -1)
+                throw new errorHandler_1.AppError("Question not found", cjs_1.StatusCodes.NOT_FOUND);
+            quiz.questions.splice(index, 1);
+            yield quiz.save();
+            return quiz;
         });
     }
 }

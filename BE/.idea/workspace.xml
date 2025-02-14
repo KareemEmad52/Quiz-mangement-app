@@ -6,35 +6,28 @@
   <component name="ChangeListManager">
     <list default="true" id="61474dc0-7576-4121-a1da-90baf8669d29" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/common/Respositories/quizResult.repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/common/Respositories/quizResult.repository.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/common/Respositories/quizResult.repository.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/common/Respositories/quizResult.repository.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/common/Respositories/user.repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/common/Respositories/user.repository.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/common/Respositories/user.repository.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/common/Respositories/user.repository.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/common/Respositories/quiz.repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/common/Respositories/quiz.repository.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/common/Respositories/quiz.repository.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/common/Respositories/quiz.repository.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/modules/Quiz/quiz.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/modules/Quiz/quiz.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/modules/Quiz/quiz.controller.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/modules/Quiz/quiz.controller.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/modules/QuizResult/quizResult.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/modules/QuizResult/quizResult.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/modules/QuizResult/quizResult.controller.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/modules/QuizResult/quizResult.controller.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/modules/QuizResult/quizResult.routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/modules/QuizResult/quizResult.routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/modules/QuizResult/quizResult.routes.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/modules/QuizResult/quizResult.routes.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/modules/User/user.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/modules/User/user.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/modules/User/user.controller.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/modules/User/user.controller.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/modules/User/user.routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/modules/User/user.routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/modules/User/user.routes.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/modules/User/user.routes.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/modules/User/user.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/modules/User/user.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/modules/User/user.service.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/modules/User/user.service.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/modules/User/user.validations.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/modules/User/user.validations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/modules/User/user.validations.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/modules/User/user.validations.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/Respositories/quizResult.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/Respositories/quizResult.repository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/Respositories/user.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/Respositories/user.repository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/modules/Quiz/quiz.routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/modules/Quiz/quiz.routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/modules/Quiz/quiz.routes.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/modules/Quiz/quiz.routes.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/modules/Quiz/quiz.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/modules/Quiz/quiz.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/modules/Quiz/quiz.service.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/modules/Quiz/quiz.service.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/Respositories/quiz.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/Respositories/quiz.repository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/types/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/types/types.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modules/Quiz/quiz.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Quiz/quiz.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/QuizResult/quizResult.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/QuizResult/quizResult.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/QuizResult/quizResult.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/QuizResult/quizResult.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/User/user.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/User/user.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/User/user.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/User/user.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/User/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/User/user.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/User/user.validations.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/User/user.validations.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FE/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../FE/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FE/components/Quiz.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../FE/components/Quiz.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/Quiz/quiz.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Quiz/quiz.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/Quiz/quiz.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Quiz/quiz.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FE/app/[locale]/home/edit-quiz/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../FE/app/[locale]/home/edit-quiz/[id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FE/components/Button-animate.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../FE/components/Button-animate.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FE/components/Forms/UpdateQuizForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../FE/components/Forms/UpdateQuizForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FE/messages/ar.json" beforeDir="false" afterPath="$PROJECT_DIR$/../FE/messages/ar.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FE/messages/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/../FE/messages/en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FE/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../FE/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FE/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../FE/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FE/types/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../FE/types/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FE/utils/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../FE/utils/api.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,22 +54,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "D:\\programming\\FrontEnd Projects\\Quiz-mangement-app\\BE\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\programming\\FrontEnd Projects\\Quiz-mangement-app\\BE\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -102,6 +95,10 @@
       <workItem from="1739017254854" duration="5278000" />
       <workItem from="1739100030165" duration="2382000" />
       <workItem from="1739206177580" duration="3458000" />
+      <workItem from="1739291704395" duration="1255000" />
+      <workItem from="1739397142515" duration="730000" />
+      <workItem from="1739459931779" duration="1024000" />
+      <workItem from="1739535568919" duration="700000" />
     </task>
     <servers />
   </component>

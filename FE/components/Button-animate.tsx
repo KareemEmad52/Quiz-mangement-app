@@ -102,7 +102,7 @@ const ButtonAnimate = ({
         </>
       ) : (
         <>
-          {icon && <span className="mr-2">{icon}</span>}
+          {icon && <span className="ml-2">{icon}</span>}
           <span>{children}</span>
         </>
       )}

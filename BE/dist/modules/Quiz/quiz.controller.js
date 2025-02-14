@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteSpecificQuiz = exports.updateSpecificQuiz = exports.getSpecificQuiz = exports.getAllQuizes = exports.createQuiz = void 0;
+exports.DeleteQuestionFromSpecificQuiz = exports.AddQuestionToSpecificQuiz = exports.deleteSpecificQuiz = exports.updateSpecificQuiz = exports.getSpecificQuiz = exports.getAllQuizes = exports.createQuiz = void 0;
 const cjs_1 = require("http-status-codes/build/cjs");
 const errorHandler_1 = require("../../middlewares/errorHandler");
 const quiz_service_1 = require("./quiz.service");
@@ -67,6 +67,26 @@ exports.deleteSpecificQuiz = (0, errorHandler_1.CatchAsyncError)((req, res) => _
         message: (0, cjs_1.getReasonPhrase)(cjs_1.StatusCodes.OK),
         status: (0, cjs_1.getStatusCode)((0, cjs_1.getReasonPhrase)(cjs_1.StatusCodes.OK)),
         data: deletedQuiz,
+    });
+}));
+exports.AddQuestionToSpecificQuiz = (0, errorHandler_1.CatchAsyncError)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const updatedQuiz = yield quizService.addQuestionToSpecificQuiz(req.params.quizId, req.user.id, req.body);
+    if (!updatedQuiz)
+        throw new errorHandler_1.AppError("Quiz not found", 404);
+    res.status(cjs_1.StatusCodes.OK).json({
+        message: (0, cjs_1.getReasonPhrase)(cjs_1.StatusCodes.OK),
+        status: (0, cjs_1.getStatusCode)((0, cjs_1.getReasonPhrase)(cjs_1.StatusCodes.OK)),
+        data: updatedQuiz,
+    });
+}));
+exports.DeleteQuestionFromSpecificQuiz = (0, errorHandler_1.CatchAsyncError)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const deletedQuestion = yield quizService.deleteQuestion(req.params.quizId, req.user.id, req.body);
+    if (!deletedQuestion)
+        throw new errorHandler_1.AppError("An error occurred while deleting question", 404);
+    res.json({
+        message: (0, cjs_1.getReasonPhrase)(cjs_1.StatusCodes.OK),
+        status: (0, cjs_1.getStatusCode)((0, cjs_1.getReasonPhrase)(cjs_1.StatusCodes.OK)),
+        data: deletedQuestion
     });
 }));
 //# sourceMappingURL=quiz.controller.js.map

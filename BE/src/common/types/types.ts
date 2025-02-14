@@ -82,3 +82,14 @@ export interface QuizWithQuestionsDto {
 export interface deleteQuizReturnType {
     deleted: boolean
 }
+
+export interface addQuestionToQuizDto {
+    title: string,
+    choices: string[],
+    correctAnswer: string,
+    quizId: string
+}
+
+export interface deleteQuestionDto {
+    questionId: string
+}
